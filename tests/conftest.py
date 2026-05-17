@@ -6,10 +6,11 @@ from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.pool import StaticPool
 
 import sqlalchemy
+
 test_engine = sqlalchemy.create_engine(
-    "sqlite:///:memory:", 
+    "sqlite:///:memory:",
     connect_args={"check_same_thread": False},
-    poolclass=StaticPool
+    poolclass=StaticPool,
 )
 sqlalchemy.create_engine = lambda *args, **kwargs: test_engine
 
