@@ -72,6 +72,8 @@ def update_wish(
 
     update_data = wish_data.model_dump(exclude_unset=True)
     for key, value in update_data.items():
+        if key == "link":
+            value = str(value)
         setattr(wish, key, value)
 
     db.commit()
