@@ -3,17 +3,18 @@ from pydantic import BaseModel, HttpUrl, Field, ConfigDict
 
 
 class UserAuth(BaseModel):
-    """Модель регистрации пользователя."""
+    """Схема регистрации пользователя."""
 
     username: str
     password: str
 
 
 class UserResponse(BaseModel):
-    """Модель ответа с данными пользователя."""
+    """Схема ответа с данными пользователя."""
 
     id: int
     username: str
+    
     model_config = ConfigDict(from_attributes=True)
 
 

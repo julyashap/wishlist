@@ -33,7 +33,7 @@ def register(user_data: UserAuth, db: Session = Depends(get_db)) -> dict[str, An
 def login(
     user_data: UserAuth, response: Response, db: Session = Depends(get_db)
 ) -> dict[str, Any]:
-    """Выполняет вход в систему пользователя."""
+    """Выполняет вход пользователя в систему."""
     user = db.query(User).filter(User.username == user_data.username).first()
     if not user:
         raise HTTPException(
