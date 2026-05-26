@@ -36,11 +36,7 @@ class WishCreate(WishBase):
 class WishUpdate(WishBase):
     """Схема обновления модели желания."""
 
-    title: Annotated[str | None, Field(default=None)]
-    description: Annotated[str | None, Field(default=None)]
-    link: Annotated[HttpUrl | None, Field(default=None)]
-    price: Annotated[float | None, Field(default=None)]
-    priority: Annotated[str, Field(default="low")]
+    title: Annotated[str | None, Field(default=None)]]
     is_bought: Annotated[bool | None, Field(default=None)]
 
 
