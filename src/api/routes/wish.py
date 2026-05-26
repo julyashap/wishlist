@@ -15,6 +15,10 @@ def create_wish(
     current_user: User = Depends(get_current_user),
 ) -> Wish:
     """Создает желание."""
+    link = wish_data.link
+    if link is not None:
+        wish_data.link = str(link)
+
     new_wish = Wish(**wish_data.model_dump(), user_id=current_user.id)
     db.add(new_wish)
     db.commit()
@@ -72,7 +76,7 @@ def update_wish(
 
     update_data = wish_data.model_dump(exclude_unset=True)
     for key, value in update_data.items():
-        if key == "link":
+        if key == "link" and value is not None:
             value = str(value)
         setattr(wish, key, value)
 
